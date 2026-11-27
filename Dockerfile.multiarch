@@ -1,0 +1,10 @@
+FROM scratch
+ARG TARGETARCH
+WORKDIR /
+COPY LICENSE /licenses/apache2.txt
+COPY security-build/linux-${TARGETARCH}/config-reloader /app
+USER 65532:65532
+LABEL name="VictoriaMetrics/operator"
+LABEL maintainer="VictoriaMetrics, Inc."
+LABEL vendor="VictoriaMetrics, Inc."
+ENTRYPOINT ["/app"]
